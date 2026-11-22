@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="پروتوتایپ نمایشی با داده‌های فرضی">
+  <title>پروتوتایپ دو کیف پول</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles/fonts.css">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/shell.css">
+  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/wallet.css">
+  <link rel="stylesheet" href="styles/flows.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/app-mobile.css">
+  <link rel="stylesheet" href="styles/shell-mobile.css">
+  <link rel="stylesheet" href="styles/utilities.css">
+  <script type="module" src="js/pages/prototype.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <main class="stage">
+      <nav class="topnav" aria-label="بخش‌های پروتوتایپ">
+        <button id="panel-toggle" type="button" data-act="panel" aria-expanded="false" aria-controls="controls">تنظیم حالت</button>
+      </nav>
+      <div class="stagebody"><div class="frame desktop"></div></div>
+    </main>
+    <aside class="ctl" id="controls" aria-label="کنترل پروتوتایپ"></aside>
+  </div>
+  <div class="sr-only" id="announcer" role="status"></div>
+  <noscript>این پروتوتایپ به JavaScript نیاز دارد.</noscript>
+</body>
+</html>

@@ -1,0 +1,20 @@
+body{overflow:auto;background:#f4f4f3}
+.doc{max-width:1200px;margin:0 auto;padding:24px 28px 60px}
+.doc h1{font-size:22px;margin:0 0 4px}
+.doc h2{font-size:17px;margin:28px 0 8px}
+.doc h3{font-size:14px;margin:16px 0 6px;color:var(--ink2)}
+.hint{color:var(--ink3);margin:0 0 12px}
+.dt{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:13px}
+.dt th{background:var(--fill);text-align:start;padding:8px 10px;font-size:12px;white-space:nowrap}
+.dt td{border-top:1px solid var(--line);padding:8px 10px;vertical-align:top}
+.idl{font-weight:800;text-decoration:none;border:1.5px solid var(--ink);border-radius:8px;padding:1px 8px;white-space:nowrap}
+.idl:hover{background:var(--ink);color:#fff}
+.cid{direction:ltr;text-align:left;font-family:ui-monospace,monospace;font-size:12px;white-space:nowrap;color:var(--ink2)}
+.where{color:var(--ink3);font-size:12px;width:28%}
+.table-wrap{overflow-x:auto;max-width:100%}
+.table-wrap .dt{min-width:640px}
+@media (max-width:600px){
+  .doc{padding:16px 12px 40px}
+  .topnav{flex-wrap:wrap}
+  .topnav b,.topnav .sp,.topnav .disclaimer{display:none}
+}

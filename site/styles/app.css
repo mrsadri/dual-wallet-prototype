@@ -1,0 +1,36 @@
+/* ---------- badges ---------- */
+.bdg{display:inline-flex;align-items:center;font-size:10.5px;font-weight:700;line-height:1;padding:3px 6px;border-radius:6px;border:1px dashed #6b6a66;color:#3a3936;background:#fff;cursor:help;margin-inline-start:6px;vertical-align:middle;white-space:nowrap}
+.nobadges .bdg{display:none}
+
+/* ---------- app chrome ---------- */
+.app{padding:14px;min-height:100%;display:flex;flex-direction:column;gap:14px}
+.hdr{background:var(--surface);border:1px solid var(--line);border-radius:22px;height:72px;display:flex;align-items:center;padding:0 22px;gap:26px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:18px;white-space:nowrap}
+.logo i{width:28px;height:34px;background:var(--fill2);border-radius:8px 8px 14px 14px;display:block}
+.logo small{display:block;font-size:11px;font-weight:600;color:var(--ink2);line-height:1}
+.nav{display:flex;gap:26px;flex:1}
+.nav a{text-decoration:none;font-weight:600;cursor:pointer;white-space:nowrap}
+.nav a:after{content:'⌄';margin-inline-start:6px;color:var(--ink3)}
+.nav a.plain:after{content:''}
+.user{border:1px solid var(--line2);border-radius:12px;padding:8px 14px;font-weight:700;white-space:nowrap}
+.burger{display:none}
+.body{display:flex;gap:16px;align-items:flex-start;flex:1}
+.side{width:250px;flex:none;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:14px 0}
+.side h4{margin:10px 0 4px;padding:4px 20px;background:var(--fill);font-size:13px}
+.side a{display:flex;gap:10px;align-items:center;padding:10px 22px;text-decoration:none;cursor:pointer;font-weight:600}
+.side a i{width:22px;height:22px;border:1.6px solid var(--ink2);border-radius:6px;display:block;flex:none}
+.side a.on{background:var(--fill2);margin:0 10px;border-radius:12px;padding:10px 12px}
+.side a em{font-style:normal;color:var(--red);margin-inline-start:auto;font-size:12px}
+.main{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px}
+.foot{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 22px;display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink2);gap:12px}
+
+/* ---------- blocks ---------- */
+.box{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.titlerow h1{font-size:18px;margin:0}
+.link{background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-weight:600;color:var(--ink)}
+.btn{border-radius:12px;padding:10px 22px;font-weight:700;cursor:pointer;border:1.5px solid var(--ink);background:#fff;white-space:nowrap}
+.btn.pri{background:var(--ink);color:#fff}
+.btn:disabled{background:var(--fill);border-color:var(--fill2);color:var(--ink3);cursor:not-allowed}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn.sm{padding:6px 14px;font-size:13px}

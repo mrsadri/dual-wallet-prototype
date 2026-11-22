@@ -1,0 +1,6 @@
+:root{
+  --bg:#ecebe9; --surface:#f7f7f6; --card:#ffffff; --line:#d6d5d2; --line2:#c2c1bd;
+  --ink:#1c1c1b; --ink2:#55534f; --ink3:#62605c; --fill:#e4e3e0; --fill2:#d2d1cd;
+  --sel:#1c1c1b; --red:#c62828; --redbg:#fdecec; --redline:#efb4b4;
+  --r:14px; --rs:10px;
+}

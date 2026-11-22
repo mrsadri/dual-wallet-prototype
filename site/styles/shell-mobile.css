@@ -1,0 +1,15 @@
+/* Reviewer shell on small screens. The product's own mobile layout is in app-mobile.css. */
+@media (max-width:900px){
+  .shell{height:100vh;height:100dvh}
+  .topnav{padding:6px 8px;gap:4px}
+  .topnav b,.topnav .sp,.topnav .disclaimer{display:none}
+  .topnav a{padding:4px 8px;font-size:12px}
+  #panel-toggle{display:block;margin-inline-start:auto;border:1px solid #777;border-radius:999px;padding:3px 10px;background:transparent;color:#eee;font-size:12px;cursor:pointer}
+  .panel-close{display:block;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:4px 14px;cursor:pointer}
+  .stagebody{padding:0;overflow:hidden}
+  .frame.desktop,.frame.mobile{width:100%;min-width:0;max-width:600px;height:100%;max-height:none;border:0;border-radius:0;box-shadow:none}
+  .vp-control{display:none}
+  .ctl{display:none;position:fixed;inset:0;z-index:50;width:100%;border:0}
+  .ctl-open .ctl{display:block}
+  .snack{white-space:normal;width:calc(100% - 24px);text-align:center}
+}
