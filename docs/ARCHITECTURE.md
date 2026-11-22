@@ -30,6 +30,7 @@ site/                     تنها پوشه‌ای که منتشر می‌شود
     ├── ui/               قالب‌بندی، آیکون و اجزای مشترک
     ├── views/            توابع state → HTML
     └── pages/            اتصال به DOM
+scripts/serve.mjs         سرور محلی با مسیر مشابه Pages
 tests/
 ├── unit/                 قواعد، state و مرزهای معماری
 └── e2e/                  مرورگر واقعی
@@ -38,13 +39,12 @@ tests/
 ## جهت وابستگی
 
 ```mermaid
-flowchart LR
+flowchart TD
   pages --> views
   pages --> state
-  views --> domain
   views --> ui
+  views --> domain
   state --> domain
-  state --> content
   domain --> content
   domain --> config
   ui --> content
@@ -54,7 +54,7 @@ flowchart LR
 - `views` فقط HTML برمی‌گرداند و state را تغییر نمی‌دهد.
 - فقط `pages` به DOM، آدرس و کلیپ‌بورد دست می‌زند.
 
-این مرزها با تست کنترل می‌شوند.
+هر لایه می‌تواند از لایه‌های پایین‌ترش هم مستقیم import کند. فهرست دقیق مجازها در `tests/unit/architecture.test.js` است و با تست کنترل می‌شود.
 
 ## جریان داده
 

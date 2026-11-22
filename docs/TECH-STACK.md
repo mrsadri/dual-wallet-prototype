@@ -9,7 +9,7 @@
 | منطق | JavaScript با ES Modules | تفکیک لایه‌ها بدون build |
 | فونت | Vazirmatn، میزبانی داخلی | مستقل از CDN، با مجوز OFL 1.1 |
 | تست واحد | `node:test` | داخل خود Node |
-| تست مرورگر | Playwright | رفتار، واکنش‌گرایی و CSP در مرورگر واقعی |
+| تست مرورگر | Playwright با Chromium، WebKit و Firefox | رفتار، واکنش‌گرایی و CSP در مرورگر واقعی |
 | دسترس‌پذیری | axe-core | بررسی خودکار WCAG |
 | CI/CD | GitHub Actions | اول تست، بعد انتشار |
 | میزبانی | GitHub Pages | ایستا و HTTPS |
@@ -26,4 +26,5 @@
 ## نیازمندی‌ها
 
 - توسعه: Node 22 یا بالاتر
-- مرورگر: Chrome و Edge از 105، Safari از 16، Firefox از 110
+- مرورگر: Chrome و Edge از 105، Safari از 16، Firefox از 112
+- نسخه‌های بالا از روی قابلیت‌های استفاده‌شده‌اند. CI فقط نسخه‌ی فعلی سه موتور را تست می‌کند.

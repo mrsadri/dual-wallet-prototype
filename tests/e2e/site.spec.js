@@ -137,3 +137,16 @@ for (const path of ['./', './#s=T03', './#s=C02', './#s=N02', './#s=M06', './#s=
     });
   }
 }
+
+test('every action is reachable by keyboard', async ({ page }) => {
+  await page.goto('./');
+  for (const id of ids) {
+    await page.evaluate(value => { location.hash = `s=${value}`; }, id);
+    await expect(page.locator('.scbox .id')).toHaveText(id);
+    const unreachable = await page.evaluate(() => [...document.querySelectorAll('[data-act]')]
+      // A badge inside a row is repeated as a button on that row's detail page.
+      .filter(element => element.tabIndex < 0 && !element.matches('.rowx .bdg'))
+      .map(element => element.outerHTML.slice(0, 120)));
+    expect(unreachable, id).toEqual([]);
+  }
+});
