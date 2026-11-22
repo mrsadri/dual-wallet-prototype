@@ -1,15 +1,32 @@
 /* Reviewer shell on small screens. The product's own mobile layout is in app-mobile.css. */
+@media (max-width:1150px){
+  .shell .topnav .disclaimer{display:none}
+}
 @media (max-width:900px){
-  .shell{height:100vh;height:100dvh}
-  .topnav{padding:6px 8px;gap:4px}
-  .topnav b,.topnav .sp,.topnav .disclaimer{display:none}
-  .topnav a{padding:4px 8px;font-size:12px}
-  #panel-toggle{display:block;margin-inline-start:auto;border:1px solid #777;border-radius:999px;padding:3px 10px;background:transparent;color:#eee;font-size:12px;cursor:pointer}
-  .panel-close{display:block;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:4px 14px;cursor:pointer}
+  .topnav{min-height:52px;padding:4px 6px;gap:2px}
+  .topnav b,.topnav .sp{display:none}
+  .topnav a{min-height:44px;padding:4px 8px;font-size:12px}
+  #panel-toggle{min-height:44px;padding:4px 9px;margin-inline-end:auto}
+
+  .ctl{position:absolute;inset-block:0;inset-inline-start:0;z-index:50;width:360px;max-width:100%}
+  .pt-scrim{position:absolute;inset:0;z-index:49;background:rgba(20,24,34,.45)}
+  .ctl .pt-button,.pt-tabs button,.pt-choices button,.pt-check,.pt-find input[type="search"]{min-height:44px}
+  .pt-find input[type="search"]{font-size:16px}
+
+  .pt-toolbar{min-height:52px;padding:4px;flex-wrap:nowrap}
+  .pt-scenario{flex-basis:auto;gap:0}
+  .pt-arrow{width:44px;height:44px;border:0}
+  .pt-summary,.pt-tools,.pt-count,.pt-restore span{display:none}
+  .pt-current{padding:0 4px}
+  .pt-heading{gap:6px}
+  .pt-current-title{font-size:12.5px;white-space:normal;line-height:1.5;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+  .pt-restore{min-height:44px;padding:2px 7px}
+
   .stagebody{padding:0;overflow:hidden}
-  .frame.desktop,.frame.mobile{width:100%;min-width:0;max-width:600px;height:100%;max-height:none;border:0;border-radius:0;box-shadow:none}
-  .vp-control{display:none}
-  .ctl{display:none;position:fixed;inset:0;z-index:50;width:100%;border:0}
-  .ctl-open .ctl{display:block}
+  .frame-holder{width:100%;max-width:600px;height:100%}
+  .frame.desktop,.frame.mobile{width:100%;height:100%;border:0;border-radius:0;box-shadow:none}
   .snack{white-space:normal;width:calc(100% - 24px);text-align:center}
+}
+@media (max-width:600px){
+  .ctl{width:100%}
 }

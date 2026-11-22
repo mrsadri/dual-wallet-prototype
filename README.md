@@ -20,10 +20,11 @@ npm run test:e2e   # مرورگر؛ به Chrome نصب‌شده نیاز دار�
 | تغییر | فایل |
 |---|---|
 | متن رابط | `site/js/content/copy.js` |
-| سناریو | `site/js/content/scenarios.js` |
+| سناریو و عنوانش | `site/js/content/scenarios.js` |
 | آستانه، مبلغ و تاریخ | `site/js/config.js` |
 | قواعد | `site/js/domain/` |
 | صفحه‌ها | `site/js/views/` |
+| ابزار بازبینی (پنل و قاب) | `site/styles/shell.css` و `site/js/pages/` |
 | رنگ‌ها | `site/styles/tokens.css` |
 
 ## انتشار
@@ -36,6 +37,7 @@ npm run test:e2e   # مرورگر؛ به Chrome نصب‌شده نیاز دار�
 - [تکنولوژی‌ها](docs/TECH-STACK.md)
 - [Todo](docs/TODO.md)
 - [چک‌لیست](docs/CHECKLIST.md)
+- [بازبینی UX](docs/UX-CHECKLIST.md)
 
 ## مجوز
 

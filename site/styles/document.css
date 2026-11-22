@@ -18,3 +18,4 @@ body{overflow:auto;background:#f4f4f3}
   .topnav{flex-wrap:wrap}
   .topnav b,.topnav .sp,.topnav .disclaimer{display:none}
 }
+.scenario-title{min-width:190px;font-weight:700}

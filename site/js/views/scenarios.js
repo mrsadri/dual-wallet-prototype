@@ -1,12 +1,12 @@
 import { CHECKLIST } from '../content/checklist.js';
 import { NOTES } from '../content/notes.js';
-import { SCENARIOS } from '../content/scenarios.js';
+import { SCENARIOS, TITLES } from '../content/scenarios.js';
 
 export function scenariosPage() {
   let h = '<div class="doc"><h1>ماتریس سناریوها</h1><p class="hint">هر شناسه را بزن تا همان حالت در پروتوتایپ باز شود. ردیف‌های «P» در ماتریس اجباری‌اند و بقیه اختیاری‌اند، ولی همه ساخته شده‌اند.</p>';
   SCENARIOS.forEach(g => {
-    h += `<h2>${g.g}</h2><div class="table-wrap" tabindex="0"><table class="dt"><tr><th>ID</th><th>P</th><th>فاز</th><th>بخش</th><th>لگسی</th><th>جدید</th><th>صفحه</th><th>رفتار مورد انتظار</th><th>پاسخ به</th></tr>`;
-    g.items.forEach(x => { h += `<tr><td><a class="idl" href="./#s=${x[0]}">${x[0]}</a></td><td>${x[1] ? '✓' : ''}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td><td>${x[5]}</td><td>${x[6]}</td><td>${x[7]}</td><td>${x[8]}</td></tr>`; });
+    h += `<h2>${g.g}</h2><div class="table-wrap" tabindex="0"><table class="dt"><tr><th>ID</th><th>عنوان</th><th>P</th><th>فاز</th><th>بخش</th><th>لگسی</th><th>جدید</th><th>صفحه</th><th>رفتار مورد انتظار</th><th>پاسخ به</th></tr>`;
+    g.items.forEach(x => { h += `<tr><td><a class="idl" href="./#s=${x[0]}">${x[0]}</a></td><td class="scenario-title">${TITLES[x[0]]}</td><td>${x[1] ? '✓' : ''}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td><td>${x[5]}</td><td>${x[6]}</td><td>${x[7]}</td><td>${x[8]}</td></tr>`; });
     h += '</table></div>';
   });
   h += '<h2>چک‌لیست اج‌کیس</h2>';

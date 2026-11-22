@@ -25,13 +25,56 @@
 </head>
 <body>
   <div class="shell">
-    <main class="stage">
+    <header class="pt-header">
       <nav class="topnav" aria-label="بخش‌های پروتوتایپ">
-        <button id="panel-toggle" type="button" data-act="panel" aria-expanded="false" aria-controls="controls">تنظیم حالت</button>
+        <button id="panel-toggle" type="button" data-act="panel" aria-expanded="false" aria-controls="controls" aria-label="پنل کنترل" title="باز یا بسته کردن پنل کنترل">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/></svg>
+          <span>پنل</span>
+        </button>
       </nav>
-      <div class="stagebody"><div class="frame desktop"></div></div>
-    </main>
-    <aside class="ctl" id="controls" aria-label="کنترل پروتوتایپ"></aside>
+    </header>
+
+    <div class="workspace">
+      <aside class="ctl" id="controls" aria-label="کنترل پروتوتایپ">
+        <div class="pt-panel-head">
+          <h2>کنترل پروتوتایپ</h2>
+          <button class="pt-button" type="button" data-act="closepanel">بستن</button>
+        </div>
+        <div class="pt-tabs">
+          <button type="button" data-act="tab" data-v="scenarios" aria-pressed="true">سناریوها</button>
+          <button type="button" data-act="tab" data-v="settings" aria-pressed="false">تنظیم حالت</button>
+        </div>
+        <section class="pt-pane" data-section="scenarios" aria-label="سناریوها">
+          <div class="pt-find">
+            <input id="scenario-search" type="search" aria-label="جستجوی سناریو" placeholder="جستجوی عنوان، شرح یا کد" autocomplete="off">
+            <label class="pt-check"><input id="required-only" type="checkbox"> فقط سناریوهای ضروری</label>
+          </div>
+          <div class="pt-list" id="scenario-list"></div>
+        </section>
+        <section class="pt-pane" data-section="settings" aria-label="تنظیم حالت" hidden>
+          <div class="pt-settings" id="settings"></div>
+        </section>
+      </aside>
+      <div class="pt-scrim" data-act="closepanel" aria-hidden="true" hidden></div>
+
+      <main class="stage">
+        <h1 class="sr-only">پروتوتایپ دو کیف پول</h1>
+        <div class="pt-toolbar">
+          <div class="pt-scenario" id="scenario-bar"></div>
+          <div class="pt-tools">
+            <div class="pt-devices" role="group" aria-label="سایز نمایش">
+              <button type="button" data-act="set" data-k="vp" data-v="desktop" aria-pressed="true">دسکتاپ</button>
+              <button type="button" data-act="set" data-k="vp" data-v="mobile" aria-pressed="false">موبایل</button>
+            </div>
+            <button class="pt-button" id="zoom" type="button" data-act="zoom" hidden></button>
+            <button class="pt-button pt-share" type="button" data-act="copylink">کپی لینک</button>
+          </div>
+        </div>
+        <div class="stagebody">
+          <div class="frame-holder"><div class="frame desktop"></div></div>
+        </div>
+      </main>
+    </div>
   </div>
   <div class="sr-only" id="announcer" role="status"></div>
   <noscript>این پروتوتایپ به JavaScript نیاز دارد.</noscript>

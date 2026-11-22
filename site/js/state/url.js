@@ -17,7 +17,11 @@ export function decodeState(hash) {
   try {
     const value = decodeURIComponent(hash.slice(1));
     if (value.startsWith('s=')) return scenarioState(value.slice(2)) ?? createState();
-    if (value.startsWith('st=')) return createState(sanitize(JSON.parse(value.slice(3))));
+    if (value.startsWith('st=')) {
+      const patch = sanitize(JSON.parse(value.slice(3)));
+      // Links made before `base` existed carry only `sc`.
+      return createState({ ...patch, base: patch.base ?? patch.sc ?? null });
+    }
   } catch {
     // A malformed link falls back to the default state.
   }

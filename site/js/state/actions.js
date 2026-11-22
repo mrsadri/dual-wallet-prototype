@@ -1,7 +1,8 @@
 import { parseAmount, topupError, withdrawalBlock } from '../domain/rules.js';
 import { findTx } from '../domain/transactions.js';
 import { bal } from '../domain/wallets.js';
-import { createState, isValid, normalize, scenarioState } from './schema.js';
+import { findScenario } from '../content/scenarios.js';
+import { DEFAULTS, createState, isValid, normalize, scenarioState } from './schema.js';
 
 const clearErrors = { tuErr: null, snack: false };
 
@@ -39,9 +40,13 @@ const HANDLERS = {
   fvtx: () => ({ fv: false, wallet: 'rial', txId: 'n-transfer', screen: 'TX' }),
   guide: () => ({ guide: true }),
   guideclose: () => ({ guide: false }),
-  cotoggle: (state, { value }) => ['rial', 'legacy'].includes(value)
-    ? { coOff: { ...state.coOff, [value]: !state.coOff[value] } }
-    : null,
+  cotoggle(state, { value }) {
+    if (!['rial', 'legacy'].includes(value)) return null;
+    const coOff = { ...state.coOff };
+    if (coOff[value]) delete coOff[value];
+    else coOff[value] = true;
+    return { coOff };
+  },
   tuinput: (state, { value }) => ({ tuAmount: value.trim() ? String(parseAmount(value)) : '' }),
   tuchip: (state, { value }) => ({ ...clearErrors, tuAmount: String(parseAmount(value)) }),
   tusubmit(state) {
@@ -58,7 +63,10 @@ const KEEPS_SCENARIO = new Set(['fvclose', 'guide', 'guideclose', 'badges']);
 export function reduce(state, action) {
   if (action.type === 'reset') return createState();
   if (action.type === 'sc') {
-    const { vp, naming, badges } = state;
+    const { naming, badges } = state;
+    // A size forced by the scenario being left is not the reviewer's preference.
+    const forced = state.base && findScenario(state.base)[9].vp;
+    const vp = forced && forced === state.vp ? DEFAULTS.vp : state.vp;
     return scenarioState(action.value, { vp, naming, badges }) ?? state;
   }
   if (!Object.hasOwn(HANDLERS, action.type)) return state;

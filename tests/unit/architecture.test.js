@@ -13,7 +13,7 @@ const ALLOWED = {
   state: ['state', 'domain', 'content'],
   ui: ['ui', 'content'],
   views: ['views', 'ui', 'domain', 'content', 'config.js'],
-  pages: ['views', 'state', 'domain', 'content'],
+  pages: ['pages', 'views', 'ui', 'state', 'domain', 'content'],
 };
 
 for (const file of scripts) {

@@ -20,7 +20,7 @@ test('every scenario renders and keeps its link', async ({ page }) => {
   await page.goto('./');
   for (const id of ids) {
     await page.evaluate(value => { location.hash = `s=${value}`; }, id);
-    await expect(page.locator('.scbox .id')).toHaveText(id);
+    await expect(page.locator('.pt-current-id')).toHaveText(id);
     await expect(page.locator('.frame .main')).not.toBeEmpty();
   }
 });
@@ -29,7 +29,7 @@ test('scenario matrix opens the prototype', async ({ page }) => {
   await page.goto('scenarios.html');
   await expect(page.locator('.idl')).toHaveCount(ids.length);
   await page.getByRole('link', { name: 'C02', exact: true }).click();
-  await expect(page.locator('.scbox .id')).toHaveText('C02');
+  await expect(page.locator('.pt-current-id')).toHaveText('C02');
 });
 
 test('copy page and font load', async ({ page }) => {
@@ -72,6 +72,7 @@ test('filter and checkboxes update the state', async ({ page }) => {
   await page.goto('./');
   await page.locator('select').selectOption('comm');
   await expect(page.locator('.rowx')).toHaveCount(2);
+  await page.locator('[data-act="tab"][data-v="settings"]').click();
   await page.locator('input[data-act="badges"]').click();
   await expect(page.locator('body')).toHaveClass(/nobadges/);
   await page.reload();
@@ -98,13 +99,13 @@ test('copying reports failure honestly', async ({ page }) => {
   await expect(page.locator('.toast')).toContainText('کپی نشد');
 });
 
-for (const width of [360, 390, 768, 1280, 1440]) {
+for (const width of [360, 390, 768, 901, 1024, 1280, 1440, 1920]) {
   test(`layout at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });
     await page.goto('./');
     for (const id of ids) {
       await page.evaluate(value => { location.hash = `s=${value}`; }, id);
-      await expect(page.locator('.scbox .id')).toHaveText(id);
+      await expect(page.locator('.pt-current-id')).toHaveText(id);
       const overflow = await page.evaluate(() => {
         const scroller = document.querySelector('.scroller');
         return { page: document.documentElement.scrollWidth - innerWidth, app: scroller.scrollWidth - scroller.clientWidth };
@@ -112,10 +113,11 @@ for (const width of [360, 390, 768, 1280, 1440]) {
       expect(overflow.page, id).toBeLessThanOrEqual(1);
       expect(overflow.app, id).toBeLessThanOrEqual(1);
     }
+    if (width > 900) expect(await page.locator('.stagebody').evaluate(element => element.scrollWidth - element.clientWidth)).toBeLessThanOrEqual(1);
     if (width <= 900) {
       expect((await page.locator('.frame').boundingBox()).width).toBe(Math.min(width, 600));
       await page.locator('#panel-toggle').click();
-      await page.locator('.qlist [data-v="C02"]').click();
+      await page.locator('.pt-item[data-v="C02"]').click();
       await expect(page.locator('.ctl')).toBeHidden();
       await expect(page).toHaveURL(/C02|st=/);
     }
@@ -142,10 +144,10 @@ test('every action is reachable by keyboard', async ({ page }) => {
   await page.goto('./');
   for (const id of ids) {
     await page.evaluate(value => { location.hash = `s=${value}`; }, id);
-    await expect(page.locator('.scbox .id')).toHaveText(id);
+    await expect(page.locator('.pt-current-id')).toHaveText(id);
     const unreachable = await page.evaluate(() => [...document.querySelectorAll('[data-act]')]
       // A badge inside a row is repeated as a button on that row's detail page.
-      .filter(element => element.tabIndex < 0 && !element.matches('.rowx .bdg'))
+      .filter(element => element.tabIndex < 0 && !element.matches('.rowx .bdg, .pt-scrim'))
       .map(element => element.outerHTML.slice(0, 120)));
     expect(unreachable, id).toEqual([]);
   }

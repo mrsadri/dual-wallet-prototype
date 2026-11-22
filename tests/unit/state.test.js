@@ -76,3 +76,23 @@ test('every generated transaction can be linked', () => {
     }
   }
 });
+
+test('every scenario has a distinct title', async () => {
+  const { TITLES } = await import('../../site/js/content/scenarios.js');
+  assert.deepEqual(Object.keys(TITLES), ids);
+  assert.equal(new Set(Object.values(TITLES)).size, ids.length);
+});
+
+test('links made before `base` keep their scenario', () => {
+  assert.equal(decodeState(`#st=${encodeURIComponent('{"sc":"T03","phase":"P2"}')}`).base, 'T03');
+});
+
+test('only real changes mark a scenario as modified', async () => {
+  const { isModified } = await import('../../site/js/state/browsing.js');
+  const start = scenarioState('C05');
+  const off = reduce(start, { type: 'cotoggle', value: 'rial' });
+  assert.equal(isModified(start), false);
+  assert.equal(isModified(off), true);
+  assert.equal(isModified(reduce(off, { type: 'cotoggle', value: 'rial' })), false);
+  assert.equal(isModified(reduce(start, { type: 'set', key: 'vp', value: 'mobile' })), false);
+});
